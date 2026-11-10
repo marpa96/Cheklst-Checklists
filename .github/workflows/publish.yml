@@ -1,0 +1,37 @@
+name: Publish Cheklst library
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cheklst-library
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build library (stops here on errors, keeping the previous publication)
+        run: node .cheklst/build.mjs "$RUNNER_TEMP/library.json"
+      - name: Publish library.json on the cheklst-library branch
+        shell: bash
+        run: |
+          git fetch origin cheklst-library || true
+          if git show-ref --verify --quiet refs/remotes/origin/cheklst-library; then
+            git checkout -B cheklst-library origin/cheklst-library
+          else
+            git checkout --orphan cheklst-library
+          fi
+          git rm -rf --ignore-unmatch . > /dev/null
+          cp "$RUNNER_TEMP/library.json" library.json
+          git add library.json
+          if git diff --cached --quiet; then echo "No changes."; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Publish Cheklst library from ${GITHUB_SHA::7}"
+          git push origin HEAD:cheklst-library
