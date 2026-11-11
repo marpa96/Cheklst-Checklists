@@ -14,6 +14,7 @@ Copy `CHECKLIST-TEMPLATE.md` as a starting point. Formatting:
 - `## Heading` starts a section.
 - `> note` adds a note; `> [!TIP]` / `[!IMPORTANT]` / `[!WARNING]` / `[!CAUTION]` add colored notes.
 - A ```` ```calc ```` block adds a calculation; see the template.
+- A ```` ```js ```` block is a calculation written in JavaScript. Use `input("Label", 4)`, `yesno("Label", false)`, `choice("Label", {easy: 0.9, hard: 1.25})` for the controls and `show("Label", value, "name")` for results (`{{name}}` then works in any item). It runs in a sealed sandbox with no internet or access to your data, and stops after 1 second. In the app, the editor's "How JavaScript calculations work" section lists everything available. To show code without running it, use ```` ```text ````.
 - The first `# Title` line is the checklist's name. Without one, the file name is used.
 - A number at the start of a name sets the order and is hidden: `1. Travel/`, `02 Packing.md`.
 - `<!-- repeat: monthly -->` (or `daily`, `weekly`, `yearly`, `every 2 weeks`, `every 3 months`…) sets how often the checklist should be done. The app shows when it's due and when you last finished it. Changing the repeat in the app overrides this line on that device.
