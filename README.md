@@ -16,10 +16,12 @@ Copy `CHECKLIST-TEMPLATE.md` as a starting point. Formatting:
 - A ```` ```calc ```` block adds a calculation; see the template.
 - The first `# Title` line is the checklist's name. Without one, the file name is used.
 - A number at the start of a name sets the order and is hidden: `1. Travel/`, `02 Packing.md`.
+- `<!-- repeat: monthly -->` (or `daily`, `weekly`, `yearly`, `every 2 weeks`, `every 3 months`…) sets how often the checklist should be done. The app shows when it's due and when you last finished it. Changing the repeat in the app overrides this line on that device.
+- Items that mention a time (`Simmer 10 min`) get a timer; items starting with a number (`3 pairs of socks`) get a counter.
 
 Files at the top level (like this README), `README.md` files and dot-folders are ignored.
 
-A checklist's identity is its file path. **Renaming or moving a file makes it a new checklist** in the app, and its "Save offline" setting starts over.
+A checklist's identity is its file path. **Renaming or moving a file makes it a new checklist** in the app, and its "Save offline" setting, repeat setting and completion history start over.
 
 Test a build locally with `node .cheklst/build.mjs /tmp/library.json`.
 

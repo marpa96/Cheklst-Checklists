@@ -1,4 +1,5 @@
 # Monthly home check
+<!-- repeat: monthly -->
 
 - [ ] Test smoke and CO detectors
 - [ ] Check HVAC filter (replace every 1–3 months)

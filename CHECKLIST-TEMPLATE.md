@@ -1,6 +1,8 @@
 # Checklist title
 
 <!-- Copy this file into a category folder (e.g. Travel/) and rename it. -->
+<!-- repeat: monthly -->
+<!-- ↑ Optional: how often this should be done (daily, weekly, monthly, yearly, every 2 weeks…). Delete if it doesn't repeat. -->
 
 ## A section
 - [ ] An item to check
